@@ -29,7 +29,7 @@
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
             --border-radius: 8px;
-            --sidebar-width: 280px;
+            --sidebar-width: 240px; /* Reduced from 280px */
         }
 
         .dark-mode {
@@ -48,25 +48,23 @@
             padding: 0;
             box-sizing: border-box;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            font-size: 14px;
+            font-size: 13px; /* Reduced from 14px */
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
             background-color: #f1f5f9;
             color: var(--dark);
-            line-height: 1.6;
+            line-height: 1.5; /* Reduced from 1.6 */
             min-height: 100vh;
             transition: var(--transition);
             overflow-x: hidden;
-            -webkit-text-size-adjust: 100%;
         }
 
         body.dark-mode {
             background-color: #0f172a;
         }
 
-        /* Prevent horizontal scroll on mobile */
         .app-container {
             display: flex;
             flex-direction: column;
@@ -75,11 +73,11 @@
             width: 100%;
         }
 
-        /* Header Styles - Mobile Optimized */
+        /* Header Styles */
         .header {
             background: linear-gradient(135deg, var(--secondary) 0%, #2e7d32 100%);
             color: white;
-            padding: 0.8rem 1rem;
+            padding: 0.8rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -89,30 +87,28 @@
             z-index: 1000;
             border-bottom: 1px solid var(--primary);
             transition: var(--transition);
-            min-height: 70px;
+            min-height: 65px; /* Slightly reduced */
         }
 
         .header-left {
             display: flex;
             align-items: center;
-            gap: 10px;
-            flex: 1;
+            gap: 15px;
         }
 
         .menu-toggle {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            width: 24px;
-            height: 18px;
+            width: 24px; /* Reduced */
+            height: 18px; /* Reduced */
             cursor: pointer;
             transition: var(--transition);
             z-index: 1001;
-            flex-shrink: 0;
         }
 
         .menu-toggle span {
-            height: 2px;
+            height: 2px; /* Reduced */
             width: 100%;
             background-color: white;
             border-radius: 2px;
@@ -134,26 +130,22 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 10px;
-            flex: 1;
-            min-width: 0; /* Prevents flex overflow */
+            gap: 12px; /* Reduced */
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 1.2rem;
+            gap: 10px; /* Reduced */
+            font-size: 1.3rem; /* Reduced from 1.5rem */
             font-weight: 700;
             color: white;
             position: relative;
-            flex-shrink: 1;
-            min-width: 0;
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
+            width: 42px; /* Reduced */
+            height: 42px; /* Reduced */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -163,7 +155,6 @@
             overflow: hidden;
             animation: rotate 20s linear infinite;
             border: 2px solid var(--primary-light);
-            flex-shrink: 0;
         }
 
         @keyframes rotate {
@@ -176,8 +167,8 @@
         }
 
         .logo-icon-inner {
-            width: 32px;
-            height: 32px;
+            width: 34px; /* Reduced */
+            height: 34px; /* Reduced */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -188,7 +179,7 @@
         }
 
         .logo-icon i {
-            font-size: 1.4rem;
+            font-size: 1.5rem; /* Reduced */
             color: white;
             animation: counterRotate 20s linear infinite;
         }
@@ -210,61 +201,31 @@
             font-weight: 700;
             letter-spacing: 0.5px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            font-size: 1.1rem;
         }
 
-        .uid-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 10px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            flex-shrink: 0;
-            display: none; /* Hidden on mobile */
-        }
-
-        .uid-text {
-            font-weight: 600;
-            color: white;
-            white-space: nowrap;
-        }
-
-        .uid-copy {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.7rem;
-        }
+        /* UID Container removed from here - moved to profile dropdown */
 
         .header-right {
             display: flex;
             align-items: center;
-            gap: 12px;
-            flex-shrink: 0;
+            gap: 15px; /* Reduced */
         }
 
         .theme-toggle {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 42px; /* Reduced */
+            height: 42px; /* Reduced */
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border-radius: 50%;
             cursor: pointer;
             transition: var(--transition);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            flex-shrink: 0;
         }
 
         .theme-toggle i {
-            font-size: 1rem;
+            font-size: 1.1rem; /* Reduced */
             color: white;
             transition: var(--transition);
         }
@@ -274,26 +235,25 @@
             background: linear-gradient(135deg, var(--primary-light), var(--primary));
         }
 
-        /* Platform Status Indicator - Mobile */
+        /* Platform Status Indicator */
         .platform-status {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 8px; /* Reduced */
             background: rgba(255, 255, 255, 0.1);
-            padding: 6px 12px;
+            padding: 6px 12px; /* Reduced */
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.85rem; /* Reduced */
             font-weight: 500;
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            min-width: 120px;
+            min-width: 180px; /* Reduced */
             justify-content: center;
-            display: none; /* Hidden on mobile */
         }
 
         .status-indicator {
-            width: 8px;
-            height: 8px;
+            width: 8px; /* Reduced */
+            height: 8px; /* Reduced */
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
@@ -315,8 +275,8 @@
         .notification {
             position: relative;
             cursor: pointer;
-            width: 40px;
-            height: 40px;
+            width: 42px; /* Reduced */
+            height: 42px; /* Reduced */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -324,7 +284,6 @@
             transition: var(--transition);
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            flex-shrink: 0;
         }
 
         .notification:hover {
@@ -332,40 +291,44 @@
         }
 
         .notification i {
-            font-size: 1.1rem;
+            font-size: 1.2rem; /* Reduced */
             color: white;
         }
 
         .notification-badge {
             position: absolute;
-            top: 6px;
-            right: 6px;
+            top: 6px; /* Reduced */
+            right: 6px; /* Reduced */
             background: linear-gradient(135deg, var(--danger), #ff6b6b);
             color: white;
             border-radius: 50%;
-            width: 18px;
-            height: 18px;
+            width: 18px; /* Reduced */
+            height: 18px; /* Reduced */
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.65rem;
+            font-size: 0.65rem; /* Reduced */
             font-weight: bold;
             z-index: 2;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             animation: pulse 2s infinite;
         }
 
+        /* Enhanced User Profile with UID */
+        .user-profile-container {
+            position: relative;
+        }
+
         .user-info {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px; /* Reduced */
             cursor: pointer;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 6px 12px; /* Reduced */
+            border-radius: 25px;
             transition: var(--transition);
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            flex-shrink: 0;
         }
 
         .user-info:hover {
@@ -373,8 +336,8 @@
         }
 
         .user-avatar {
-            width: 32px;
-            height: 32px;
+            width: 36px; /* Reduced */
+            height: 36px; /* Reduced */
             border-radius: 50%;
             background: linear-gradient(135deg, var(--secondary), #2e7d32);
             display: flex;
@@ -382,16 +345,131 @@
             justify-content: center;
             color: white;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.9rem; /* Reduced */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            flex-shrink: 0;
         }
 
         .user-name {
-            font-size: 0.9rem;
+            font-size: 0.9rem; /* Reduced */
             font-weight: 600;
             color: white;
-            display: none; /* Hidden on mobile */
+        }
+
+        /* User Profile Dropdown */
+        .user-profile-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            min-width: 280px;
+            z-index: 1001;
+            margin-top: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+        }
+
+        .user-profile-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .user-profile-header {
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--secondary) 0%, #2e7d32 100%);
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-name {
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .profile-email {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.8rem;
+        }
+
+        .user-profile-content {
+            padding: 1rem;
+        }
+
+        .profile-info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--light-gray);
+            font-size: 0.85rem;
+        }
+
+        .profile-info-item:last-child {
+            border-bottom: none;
+        }
+
+        .profile-info-label {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .profile-info-value {
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .profile-actions {
+            padding: 0.8rem 1rem;
+            border-top: 1px solid var(--light-gray);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .profile-action-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            border: none;
+            background: transparent;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: var(--border-radius);
+            font-size: 0.85rem;
+            text-align: left;
+        }
+
+        .profile-action-btn:hover {
+            background: var(--light-gray);
+        }
+
+        .profile-action-btn i {
+            width: 18px;
+            color: var(--primary);
         }
 
         /* Main Content Area */
@@ -399,14 +477,12 @@
             display: flex;
             flex: 1;
             position: relative;
-            min-height: calc(100vh - 70px);
-            width: 100%;
+            min-height: calc(100vh - 65px);
         }
 
-        /* Sidebar Styles - Mobile First */
+        /* Sidebar Styles - Compact */
         .sidebar {
-            width: 100%;
-            max-width: 280px;
+            width: var(--sidebar-width);
             background: linear-gradient(135deg, var(--secondary) 0%, #2e7d32 100%);
             box-shadow: var(--shadow-lg);
             transition: transform 0.3s ease;
@@ -414,11 +490,10 @@
             overflow-y: auto;
             border-right: 1px solid var(--primary);
             position: fixed;
-            top: 70px;
+            top: 65px;
             left: 0;
             bottom: 0;
             transform: translateX(-100%);
-            -webkit-overflow-scrolling: touch;
         }
 
         .sidebar.active {
@@ -427,22 +502,21 @@
 
         .menu {
             list-style: none;
-            padding: 1rem 0;
+            padding: 1rem 0; /* Reduced */
             width: 100%;
         }
 
         .menu-item {
-            padding: 0.9rem 1.5rem;
+            padding: 0.8rem 1.5rem; /* Reduced */
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 12px; /* Reduced */
             cursor: pointer;
             transition: var(--transition);
             color: rgba(255, 255, 255, 0.8);
             white-space: nowrap;
-            font-size: 0.95rem;
+            font-size: 0.95rem; /* Reduced */
             width: 100%;
-            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
         }
 
         .menu-item:hover {
@@ -454,31 +528,57 @@
             background-color: rgba(212, 175, 55, 0.2);
             color: var(--primary);
             font-weight: 600;
-            border-right: 4px solid var(--primary);
+            border-right: 3px solid var(--primary); /* Reduced */
         }
 
         .menu-item i {
-            width: 22px;
+            width: 22px; /* Reduced */
             text-align: center;
             flex-shrink: 0;
-            font-size: 1.1rem;
+            font-size: 1.1rem; /* Reduced */
         }
 
-        /* Content Area - Mobile Optimized */
+        .menu-item[data-target="dashboard"] i { color: #d4af37; }
+        .menu-item[data-target="news"] i { color: #3b82f6; }
+        .menu-item[data-target="mining-products"] i { color: #10b981; }
+        .menu-item[data-target="my-miners"] i { color: #f59e0b; }
+        .menu-item[data-target="deposit"] i { color: #8b5cf6; }
+        .menu-item[data-target="withdraw"] i { color: #ef4444; }
+        .menu-item[data-target="referral"] i { color: #ec4899; }
+        .menu-item[data-target="settings"] i { color: #6b7280; }
+        .menu-item[data-target="announcements"] i { color: #d946ef; }
+        .menu-item[data-target="whatsapp-admin"] i { color: #25D366; }
+        .menu-item[data-target="whatsapp-group"] i { color: #25D366; }
+        .menu-item[data-target="signout"] i { color: #ef4444; }
+
+        .menu-text {
+            font-weight: 500;
+        }
+
+        /* WhatsApp specific styles */
+        .whatsapp-admin {
+            background: rgba(37, 211, 102, 0.1);
+            border-left: 3px solid #25D366; /* Reduced */
+        }
+
+        .whatsapp-group {
+            background: rgba(37, 211, 102, 0.1);
+            border-left: 3px solid #25D366; /* Reduced */
+        }
+
+        /* Content Area */
         .content {
             flex: 1;
-            padding: 1rem;
+            padding: 1.5rem; /* Reduced */
             overflow-y: auto;
             transition: var(--transition);
             width: 100%;
             min-height: 100%;
-            -webkit-overflow-scrolling: touch;
         }
 
         .section {
             display: none;
             animation: fadeIn 0.3s ease;
-            width: 100%;
         }
 
         .section.active {
@@ -490,46 +590,34 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Welcome Message - Mobile */
+        /* All text sizes reduced proportionally */
         .welcome-message {
-            margin-bottom: 1.5rem;
-            padding-right: 0.5rem;
+            margin-bottom: 2rem; /* Reduced */
         }
 
         .welcome-message h1 {
             color: var(--dark);
-            margin-bottom: 0.5rem;
-            font-size: 1.5rem;
+            margin-bottom: 0.6rem; /* Reduced */
+            font-size: 1.8rem; /* Reduced from 2rem */
             font-weight: 700;
-            line-height: 1.3;
-        }
-
-        .welcome-message h2 {
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-            font-weight: 700;
-            line-height: 1.3;
         }
 
         .welcome-message p {
             color: var(--gray);
-            font-size: 0.95rem;
-            line-height: 1.5;
+            font-size: 1rem; /* Reduced from 1.1rem */
         }
 
-        /* Stats Grid - Mobile */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Reduced from 280px */
+            gap: 1.2rem; /* Reduced */
+            margin-bottom: 2rem; /* Reduced */
         }
 
         .stat-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 1.2rem;
+            padding: 1.5rem; /* Reduced */
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 1px solid var(--light-gray);
@@ -543,37 +631,36 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
+            height: 3px; /* Reduced */
             background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
 
         .stat-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
 
         .stat-card h3 {
             color: var(--gray);
-            font-size: 0.85rem;
-            margin-bottom: 0.8rem;
+            font-size: 0.95rem; /* Reduced */
+            margin-bottom: 0.8rem; /* Reduced */
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .stat-card .value {
-            font-size: 1.5rem;
+            font-size: 1.8rem; /* Reduced from 2rem */
             font-weight: 700;
             color: var(--dark);
-            margin-bottom: 0.5rem;
-            line-height: 1.2;
+            margin-bottom: 0.6rem; /* Reduced */
         }
 
         .stat-card .change {
-            font-size: 0.85rem;
+            font-size: 0.95rem; /* Reduced */
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 5px; /* Reduced */
             font-weight: 500;
         }
 
@@ -585,11 +672,11 @@
             color: var(--danger);
         }
 
-        /* Account Balance Cards - Mobile */
+        /* Account Balance Cards */
         .account-balance-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 1.2rem;
+            padding: 1.2rem; /* Reduced */
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 1px solid var(--light-gray);
@@ -599,48 +686,48 @@
 
         .account-balance-card h3 {
             color: var(--gray);
-            font-size: 0.85rem;
-            margin-bottom: 0.8rem;
+            font-size: 0.95rem; /* Reduced */
+            margin-bottom: 0.8rem; /* Reduced */
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .account-balance-card .value {
-            font-size: 1.5rem;
+            font-size: 1.8rem; /* Reduced from 2rem */
             font-weight: 700;
             color: var(--dark);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem; /* Reduced */
         }
 
         .account-balance-card .account-type {
-            font-size: 0.8rem;
+            font-size: 0.85rem; /* Reduced */
             color: var(--gray);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem; /* Reduced */
         }
 
         .account-balance-card .account-details {
-            font-size: 0.75rem;
+            font-size: 0.8rem; /* Reduced */
             color: var(--gray);
-            margin-top: 0.8rem;
-            padding-top: 0.8rem;
+            margin-top: 0.8rem; /* Reduced */
+            padding-top: 0.8rem; /* Reduced */
             border-top: 1px solid var(--light-gray);
         }
 
         .current-account {
-            border-top: 3px solid var(--primary);
+            border-top: 3px solid var(--primary); /* Reduced */
         }
 
         .bonus-account {
-            border-top: 3px solid var(--success);
+            border-top: 3px solid var(--success); /* Reduced */
         }
 
-        /* News Grid - Mobile */
+        /* News Section */
         .news-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Reduced */
+            gap: 1.5rem; /* Reduced */
+            margin-bottom: 2.5rem; /* Reduced */
         }
 
         .news-card {
@@ -654,25 +741,37 @@
         }
 
         .news-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
 
         .news-category {
             position: absolute;
-            top: 0.8rem;
-            right: 0.8rem;
+            top: 0.8rem; /* Reduced */
+            right: 0.8rem; /* Reduced */
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
-            padding: 4px 10px;
+            padding: 4px 10px; /* Reduced */
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.75rem; /* Reduced */
             font-weight: 600;
             z-index: 2;
         }
 
+        .crypto-news {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
+
+        .zec-news {
+            background: linear-gradient(135deg, var(--secondary), #1a5f23);
+        }
+
+        .market-news {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
         .news-image {
-            height: 160px;
+            height: 160px; /* Reduced */
             width: 100%;
             background-size: cover;
             background-position: center;
@@ -685,30 +784,36 @@
         }
 
         .news-content {
-            padding: 1.2rem;
+            padding: 1.2rem; /* Reduced */
         }
 
         .news-title {
-            font-size: 1.1rem;
+            font-size: 1.2rem; /* Reduced */
             font-weight: 700;
             color: var(--dark);
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
+            margin-bottom: 0.4rem; /* Reduced */
         }
 
         .news-meta {
             color: var(--gray);
-            font-size: 0.8rem;
-            margin-bottom: 0.8rem;
+            font-size: 0.8rem; /* Reduced */
+            margin-bottom: 0.8rem; /* Reduced */
             display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
+            gap: 8px; /* Reduced */
+        }
+
+        .news-date {
+            color: var(--primary);
+        }
+
+        .news-source {
+            color: var(--secondary);
         }
 
         .news-excerpt {
             color: var(--gray);
-            font-size: 0.9rem;
-            margin-bottom: 1.2rem;
+            font-size: 0.9rem; /* Reduced */
+            margin-bottom: 1.2rem; /* Reduced */
             line-height: 1.5;
         }
 
@@ -716,19 +821,23 @@
             color: var(--primary);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.85rem; /* Reduced */
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px; /* Reduced */
             transition: var(--transition);
         }
 
-        /* Products Grid - Mobile */
+        .news-read-more:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Mining Products Section */
         .products-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Reduced */
+            gap: 1.5rem; /* Reduced */
+            margin-bottom: 2.5rem; /* Reduced */
         }
 
         .product-card {
@@ -742,25 +851,25 @@
         }
 
         .product-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
 
         .product-badge {
             position: absolute;
-            top: 0.8rem;
-            right: 0.8rem;
+            top: 0.8rem; /* Reduced */
+            right: 0.8rem; /* Reduced */
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
-            padding: 4px 10px;
+            padding: 4px 10px; /* Reduced */
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.75rem; /* Reduced */
             font-weight: 600;
             z-index: 2;
         }
 
         .product-image {
-            height: 180px;
+            height: 180px; /* Reduced */
             width: 100%;
             background-size: cover;
             background-position: center;
@@ -772,69 +881,77 @@
             color: var(--gray);
         }
 
+        .product-image::before {
+            content: 'Your Image Here';
+            font-size: 0.95rem; /* Reduced */
+            color: var(--gray);
+        }
+
+        .product-1 .product-image { background-color: #fef3c7; }
+        .product-2 .product-image { background-color: #dbeafe; }
+        .product-3 .product-image { background-color: #fce7f3; }
+        .product-4 .product-image { background-color: #dcfce7; }
+        .product-5 .product-image { background-color: #f3e8ff; }
+
         .product-content {
-            padding: 1.2rem;
+            padding: 1.2rem; /* Reduced */
         }
 
         .product-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem; /* Reduced */
             font-weight: 700;
             color: var(--dark);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem; /* Reduced */
         }
 
         .product-subtitle {
             color: var(--gray);
-            font-size: 0.85rem;
-            margin-bottom: 0.8rem;
+            font-size: 0.85rem; /* Reduced */
+            margin-bottom: 0.8rem; /* Reduced */
         }
 
         .product-features {
-            margin: 1.2rem 0;
+            margin: 1.2rem 0; /* Reduced */
         }
 
         .product-feature {
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 0.6rem;
+            gap: 8px; /* Reduced */
+            margin-bottom: 0.6rem; /* Reduced */
             color: var(--dark);
-            font-size: 0.9rem;
+            font-size: 0.9rem; /* Reduced */
         }
 
         .product-feature i {
             color: var(--success);
-            flex-shrink: 0;
         }
 
         .product-price {
-            font-size: 1.5rem;
+            font-size: 1.6rem; /* Reduced */
             font-weight: 700;
             color: var(--primary);
-            margin: 1.2rem 0;
+            margin: 1.2rem 0; /* Reduced */
             text-align: center;
         }
 
         .product-actions {
             display: flex;
-            gap: 0.8rem;
+            gap: 0.8rem; /* Reduced */
         }
 
-        /* Buttons - Mobile Optimized */
         .btn {
-            padding: 14px 24px;
+            padding: 14px 24px; /* Reduced */
             border: none;
             border-radius: var(--border-radius);
-            font-size: 0.95rem;
+            font-size: 0.95rem; /* Reduced */
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            text-align: center;
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+            gap: 8px; /* Reduced */
         }
 
         .btn-primary {
@@ -847,13 +964,24 @@
             transform: translateY(-2px);
         }
 
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
         .btn-block {
             width: 100%;
         }
 
         .btn-sm {
-            padding: 12px 20px;
-            font-size: 0.85rem;
+            padding: 10px 18px; /* Reduced */
+            font-size: 0.85rem; /* Reduced */
         }
 
         .btn-whatsapp {
@@ -861,18 +989,23 @@
             color: white;
         }
 
-        /* Miners Grid - Mobile */
+        .btn-whatsapp:hover {
+            background: linear-gradient(135deg, #128C7E, #25D366);
+            transform: translateY(-2px);
+        }
+
+        /* My Miners Section */
         .miners-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Reduced */
+            gap: 1.2rem; /* Reduced */
+            margin-bottom: 2rem; /* Reduced */
         }
 
         .miner-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 1.2rem;
+            padding: 1.2rem; /* Reduced */
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 1px solid var(--light-gray);
@@ -885,92 +1018,122 @@
         .miner-status {
             display: flex;
             align-items: center;
-            gap: 6px;
-            margin-bottom: 0.8rem;
-            font-size: 0.85rem;
+            gap: 6px; /* Reduced */
+            margin-bottom: 0.8rem; /* Reduced */
+            font-size: 0.85rem; /* Reduced */
             font-weight: 600;
+        }
+
+        .status-active {
+            color: var(--success);
+        }
+
+        .status-expired {
+            color: var(--danger);
         }
 
         .miner-details h3 {
             color: var(--dark);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
+            margin-bottom: 0.4rem; /* Reduced */
+            font-size: 1.1rem; /* Reduced */
         }
 
         .miner-details p {
             color: var(--gray);
-            margin-bottom: 0.8rem;
-            font-size: 0.85rem;
-            line-height: 1.4;
+            margin-bottom: 0.8rem; /* Reduced */
+            font-size: 0.85rem; /* Reduced */
         }
 
         .miner-stats {
             display: flex;
             justify-content: space-between;
-            margin: 0.8rem 0;
-            padding-top: 0.8rem;
+            margin: 0.8rem 0; /* Reduced */
+            padding-top: 0.8rem; /* Reduced */
             border-top: 1px solid var(--light-gray);
         }
 
         .stat-item {
             text-align: center;
-            flex: 1;
         }
 
         .stat-value {
-            font-size: 1.1rem;
+            font-size: 1.1rem; /* Reduced */
             font-weight: 700;
             color: var(--dark);
         }
 
         .stat-label {
-            font-size: 0.75rem;
+            font-size: 0.75rem; /* Reduced */
             color: var(--gray);
             margin-top: 4px;
         }
 
-        /* Form Styles - Mobile */
+        .miner-history {
+            margin-top: 0.8rem; /* Reduced */
+            padding-top: 0.8rem; /* Reduced */
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .history-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.4rem 0; /* Reduced */
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        .history-date {
+            color: var(--gray);
+            font-size: 0.85rem; /* Reduced */
+        }
+
+        .history-amount {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        /* Form Styles */
         .form-container {
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 1.5rem;
+            padding: 2rem; /* Reduced */
             box-shadow: var(--shadow);
-            max-width: 100%;
+            max-width: 580px; /* Reduced */
             border: 1px solid var(--light-gray);
-            margin: 0 auto;
         }
 
         .form-container h2 {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.5rem; /* Reduced */
             color: var(--dark);
             font-weight: 600;
-            font-size: 1.4rem;
+            font-size: 1.6rem; /* Reduced */
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.5rem; /* Reduced */
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem; /* Reduced */
             font-weight: 600;
             color: var(--dark);
-            font-size: 0.95rem;
+            font-size: 0.95rem; /* Reduced */
         }
 
         .form-control {
             width: 100%;
-            padding: 14px 16px;
+            padding: 14px 16px; /* Reduced */
             border: 1px solid var(--light-gray);
             border-radius: var(--border-radius);
-            font-size: 0.95rem;
+            font-size: 0.95rem; /* Reduced */
             transition: var(--transition);
             background: var(--card-bg);
             color: var(--dark);
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
         }
 
         .form-control:focus {
@@ -980,42 +1143,47 @@
         }
 
         select.form-control {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2364748b' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='%2364748b' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 16px center;
             background-size: 14px;
             padding-right: 40px;
         }
 
-        /* Converter Box - Mobile */
         .converter-box {
             background: var(--light);
             border-radius: var(--border-radius);
-            padding: 1.2rem;
-            margin-bottom: 1.2rem;
+            padding: 1.2rem; /* Reduced */
+            margin-bottom: 1.2rem; /* Reduced */
             border: 1px solid var(--light-gray);
+        }
+
+        .converter-box h4 {
+            color: var(--dark);
+            margin-bottom: 0.8rem; /* Reduced */
+            font-size: 0.95rem; /* Reduced */
         }
 
         .converter-inputs {
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            gap: 0.8rem; /* Reduced */
             align-items: center;
         }
 
         .converter-input {
-            width: 100%;
+            flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.4rem; /* Reduced */
         }
 
         .converter-input input {
             width: 100%;
-            padding: 12px 14px;
+            padding: 10px 12px; /* Reduced */
             border: 1px solid var(--light-gray);
             border-radius: var(--border-radius);
-            font-size: 0.95rem;
+            font-size: 0.95rem; /* Reduced */
             background: var(--card-bg);
             color: var(--dark);
         }
@@ -1025,8 +1193,7 @@
             align-items: center;
             justify-content: center;
             color: var(--primary);
-            font-size: 1rem;
-            transform: rotate(90deg);
+            font-size: 1.1rem; /* Reduced */
         }
 
         /* Overlay for mobile menu */
@@ -1041,7 +1208,6 @@
             opacity: 0;
             visibility: hidden;
             transition: var(--transition);
-            -webkit-tap-highlight-color: transparent;
         }
 
         .overlay.active {
@@ -1049,23 +1215,21 @@
             visibility: visible;
         }
 
-        /* Toast notification - Mobile */
+        /* Toast notification */
         .toast {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
+            bottom: 25px; /* Reduced */
+            right: 25px; /* Reduced */
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
-            padding: 14px 20px;
+            padding: 14px 20px; /* Reduced */
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-lg);
             z-index: 1000;
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.3s ease;
-            font-size: 0.95rem;
-            text-align: center;
+            font-size: 0.95rem; /* Reduced */
         }
 
         .toast.show {
@@ -1073,75 +1237,74 @@
             transform: translateY(0);
         }
 
-        /* WhatsApp Sections - Mobile */
+        /* WhatsApp Sections */
         .whatsapp-container {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
-            max-width: 100%;
+            gap: 1.5rem; /* Reduced */
+            max-width: 750px; /* Reduced */
             margin: 0 auto;
         }
 
         .whatsapp-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 1.5rem;
+            padding: 2rem; /* Reduced */
             box-shadow: var(--shadow);
             border: 1px solid var(--light-gray);
             text-align: center;
         }
 
         .whatsapp-icon {
-            font-size: 3rem;
+            font-size: 3.5rem; /* Reduced */
             color: #25D366;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.2rem; /* Reduced */
         }
 
         .whatsapp-card h2 {
             color: var(--dark);
-            margin-bottom: 0.8rem;
-            font-size: 1.4rem;
+            margin-bottom: 0.8rem; /* Reduced */
+            font-size: 1.6rem; /* Reduced */
         }
 
         .whatsapp-card p {
             color: var(--gray);
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
+            margin-bottom: 1.5rem; /* Reduced */
+            font-size: 1.05rem; /* Reduced */
             line-height: 1.5;
         }
 
-        /* Login Page - Mobile */
+        /* Login Page Styles */
         .login-container {
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, rgba(26, 95, 35, 0.9) 0%, rgba(212, 175, 55, 0.9) 100%), 
-                        url('WhatsApp Image 2025-12-03 at 10.42.40 AM.jpeg') center/cover no-repeat;
-            padding: 1rem;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            padding: 1.5rem; /* Reduced */
         }
 
         .login-card {
             background: white;
             border-radius: var(--border-radius);
-            padding: 1.5rem;
+            padding: 2.5rem; /* Reduced */
             box-shadow: var(--shadow-lg);
             width: 100%;
-            max-width: 400px;
+            max-width: 420px; /* Reduced */
             text-align: center;
         }
 
         .login-card h1 {
             color: var(--secondary);
-            margin-bottom: 0.8rem;
-            font-size: 1.5rem;
+            margin-bottom: 0.8rem; /* Reduced */
+            font-size: 1.8rem; /* Reduced */
             font-weight: 700;
         }
 
         .login-card p {
             color: var(--gray);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
+            margin-bottom: 1.5rem; /* Reduced */
+            font-size: 1rem; /* Reduced */
         }
 
         .google-signin {
@@ -1149,258 +1312,125 @@
             color: #333;
             border: 1px solid var(--light-gray);
             width: 100%;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.2rem; /* Reduced */
+        }
+
+        .google-signin:hover {
+            background: #f8fafc;
         }
 
         .divider {
             display: flex;
             align-items: center;
-            margin: 1.5rem 0;
+            margin: 1.5rem 0; /* Reduced */
             color: var(--gray);
         }
 
-        .divider span {
-            padding: 0 0.8rem;
-            font-size: 0.9rem;
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--light-gray);
         }
 
-        /* Responsive Design - Tablet */
-        @media (min-width: 768px) {
-            .header {
-                padding: 1rem 1.5rem;
+        .divider span {
+            padding: 0 0.8rem; /* Reduced */
+            font-size: 0.9rem; /* Reduced */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .content {
+                padding: 1.2rem; /* Reduced */
             }
             
-            .logo {
-                font-size: 1.3rem;
+            .sidebar {
+                top: 65px;
+                left: 0;
+                bottom: 0;
             }
-            
-            .logo-icon {
-                width: 45px;
-                height: 45px;
-            }
-            
-            .logo-icon-inner {
-                width: 36px;
-                height: 36px;
-            }
-            
-            .logo-icon i {
-                font-size: 1.5rem;
-            }
-            
-            .user-name {
-                display: block; /* Show on tablet */
+
+            .sidebar.active {
+                transform: translateX(0);
             }
             
             .platform-status {
-                display: flex; /* Show on tablet */
-                min-width: 180px;
+                display: none;
             }
-            
-            .uid-container {
-                display: flex; /* Show on tablet */
-            }
-            
+        }
+
+        @media (max-width: 768px) {
             .content {
-                padding: 1.5rem;
+                padding: 1rem;
             }
             
-            .stats-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 1.2rem;
+            .header {
+                padding: 0.6rem 1rem; /* Reduced */
             }
             
-            .news-grid,
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
+            .stats-grid,
+            .products-grid,
+            .miners-grid,
+            .news-grid {
+                grid-template-columns: 1fr;
             }
             
-            .miners-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.2rem;
+            .product-actions {
+                flex-direction: column;
+            }
+            
+            .user-name {
+                display: none;
+            }
+            
+            .form-container {
+                padding: 1.2rem; /* Reduced */
+            }
+            
+            .login-card {
+                padding: 1.8rem; /* Reduced */
             }
             
             .converter-inputs {
-                flex-direction: row;
+                flex-direction: column;
             }
             
             .converter-icon {
-                transform: rotate(0deg);
+                transform: rotate(90deg);
             }
             
-            .sidebar {
-                max-width: 260px;
-            }
-            
-            .toast {
-                left: auto;
-                right: 30px;
-                bottom: 30px;
-                width: auto;
-                max-width: 400px;
+            .user-profile-dropdown {
+                position: fixed;
+                top: 65px;
+                right: 0;
+                left: 0;
+                bottom: 0;
+                border-radius: 0;
+                margin-top: 0;
+                min-width: auto;
             }
         }
 
-        /* Responsive Design - Desktop */
-        @media (min-width: 1024px) {
-            .header {
-                padding: 1.2rem 2rem;
-            }
-            
-            .logo {
-                font-size: 1.5rem;
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.1rem; /* Reduced */
             }
             
             .logo-icon {
-                width: 50px;
-                height: 50px;
+                width: 36px; /* Reduced */
+                height: 36px; /* Reduced */
             }
             
             .logo-icon-inner {
-                width: 40px;
-                height: 40px;
+                width: 28px; /* Reduced */
+                height: 28px; /* Reduced */
             }
             
-            .logo-icon i {
-                font-size: 1.8rem;
+            .theme-toggle,
+            .notification {
+                width: 36px; /* Reduced */
+                height: 36px; /* Reduced */
             }
-            
-            .content {
-                padding: 2rem;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 1.5rem;
-            }
-            
-            .news-grid,
-            .products-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 2rem;
-            }
-            
-            .miners-grid {
-                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-                gap: 1.5rem;
-            }
-            
-            .sidebar {
-                transform: translateX(0);
-                position: relative;
-                top: 0;
-                height: 100%;
-            }
-            
-            .menu-toggle {
-                display: none; /* Hide on desktop */
-            }
-            
-            .main-content {
-                margin-left: 280px;
-                width: calc(100% - 280px);
-            }
-            
-            .sidebar {
-                width: 280px;
-                max-width: 280px;
-            }
-            
-            .overlay {
-                display: none; /* Hide on desktop */
-            }
-        }
-
-        /* iPhone notch and status bar safe areas */
-        @supports (padding: max(0px)) {
-            .header {
-                padding-left: max(1rem, env(safe-area-inset-left));
-                padding-right: max(1rem, env(safe-area-inset-right));
-                padding-top: max(0.8rem, env(safe-area-inset-top));
-            }
-            
-            .content {
-                padding-left: max(1rem, env(safe-area-inset-left));
-                padding-right: max(1rem, env(safe-area-inset-right));
-                padding-bottom: max(1rem, env(safe-area-inset-bottom));
-            }
-            
-            .sidebar {
-                padding-left: max(0px, env(safe-area-inset-left));
-                padding-top: max(0px, env(safe-area-inset-top));
-                padding-bottom: max(0px, env(safe-area-inset-bottom));
-            }
-            
-            .login-container {
-                padding-left: max(1rem, env(safe-area-inset-left));
-                padding-right: max(1rem, env(safe-area-inset-right));
-                padding-top: max(1rem, env(safe-area-inset-top));
-                padding-bottom: max(1rem, env(safe-area-inset-bottom));
-            }
-        }
-
-        /* Prevent text size adjustment on orientation change */
-        html {
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-            text-size-adjust: 100%;
-        }
-
-        /* Improve touch targets */
-        button,
-        .menu-item,
-        .uid-container,
-        .notification,
-        .theme-toggle,
-        .user-info {
-            min-height: 44px;
-            min-width: 44px;
-        }
-
-        /* Fix for iOS zoom on input focus */
-        input,
-        select,
-        textarea {
-            font-size: 16px; /* Prevents iOS zoom */
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Hide scrollbar on mobile but allow scrolling */
-        .sidebar,
-        .content {
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .sidebar::-webkit-scrollbar,
-        .content::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        .sidebar::-webkit-scrollbar-track,
-        .content::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .sidebar::-webkit-scrollbar-thumb,
-        .content::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 2px;
-        }
-
-        /* Fix for mobile viewport height */
-        .login-container,
-        .app-container {
-            min-height: 100vh;
-            min-height: -webkit-fill-available;
-        }
-
-        html {
-            height: -webkit-fill-available;
         }
     </style>
 </head>
@@ -1441,7 +1471,7 @@
                 </button>
             </form>
             
-            <p style="margin-top: 1.2rem; font-size: 0.9rem;">
+            <p style="margin-top: 1.2rem;">
                 Don't have an account? <a href="#" id="show-signup" style="color: var(--secondary); text-decoration: none;">Sign up</a>
             </p>
         </div>
@@ -1467,10 +1497,7 @@
                         </div>
                         <span class="logo-text">ZECMINER</span>
                     </div>
-                    <div class="uid-container" id="uid-container">
-                        <span class="uid-text">Miner ID: ZEC-2023-MD-001</span>
-                        <span class="uid-copy"><i class="fas fa-copy"></i></span>
-                    </div>
+                    <!-- UID Container removed from here -->
                 </div>
             </div>
             <div class="header-right">
@@ -1487,10 +1514,67 @@
                     <i class="fas fa-bell"></i>
                     <div class="notification-badge">3</div>
                 </div>
-                <!-- Profile Design -->
-                <div class="user-info">
-                    <div class="user-avatar">MP</div>
-                    <div class="user-name">Mining Pro</div>
+                <!-- Enhanced Profile with UID -->
+                <div class="user-profile-container">
+                    <div class="user-info" id="user-info-toggle">
+                        <div class="user-avatar">MP</div>
+                        <div class="user-name">Mining Pro</div>
+                    </div>
+                    <div class="user-profile-dropdown" id="user-profile-dropdown">
+                        <div class="user-profile-header">
+                            <div class="profile-avatar">MP</div>
+                            <h3 class="profile-name">Mining Pro</h3>
+                            <p class="profile-email">mining.pro@example.com</p>
+                        </div>
+                        <div class="user-profile-content">
+                            <div class="profile-info-item">
+                                <span class="profile-info-label">Account Status</span>
+                                <span class="profile-info-value" style="color: var(--success);">Active</span>
+                            </div>
+                            <div class="profile-info-item">
+                                <span class="profile-info-label">Miner ID</span>
+                                <span class="profile-info-value" id="profile-miner-id">ZEC-2023-MD-001</span>
+                            </div>
+                            <div class="profile-info-item">
+                                <span class="profile-info-label">Member Since</span>
+                                <span class="profile-info-value">Jan 2023</span>
+                            </div>
+                            <div class="profile-info-item">
+                                <span class="profile-info-label">Account Level</span>
+                                <span class="profile-info-value">Premium</span>
+                            </div>
+                            <div class="profile-info-item">
+                                <span class="profile-info-label">Total Balance</span>
+                                <span class="profile-info-value">$12,458.75</span>
+                            </div>
+                            <div class="profile-info-item">
+                                <span class="profile-info-label">Active Miners</span>
+                                <span class="profile-info-value">5</span>
+                            </div>
+                            <div class="profile-info-item">
+                                <span class="profile-info-label">Daily Earnings</span>
+                                <span class="profile-info-value">$125.50</span>
+                            </div>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="profile-action-btn" id="copy-miner-id">
+                                <i class="fas fa-copy"></i>
+                                Copy Miner ID
+                            </button>
+                            <button class="profile-action-btn" id="edit-profile">
+                                <i class="fas fa-user-cog"></i>
+                                Edit Profile
+                            </button>
+                            <button class="profile-action-btn" id="security-settings">
+                                <i class="fas fa-shield-alt"></i>
+                                Security Settings
+                            </button>
+                            <button class="profile-action-btn" id="profile-signout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Sign Out
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
@@ -1503,7 +1587,7 @@
 
         <!-- Main Content Area -->
         <div class="main-content">
-            <!-- Sidebar Menu - Initially Hidden on Mobile -->
+            <!-- Sidebar Menu - Initially Hidden -->
             <aside class="sidebar" id="sidebar">
                 <ul class="menu">
                     <li class="menu-item active" data-target="dashboard">
@@ -2105,7 +2189,7 @@
                         </div>
                     </div>
                     
-                    <div class="welcome-message" style="margin-top: 2rem;">
+                    <div class="welcome-message" style="margin-top: 2.5rem;">
                         <h2>Mining History (Expired Bots)</h2>
                         <p>Record of your completed mining cycles</p>
                     </div>
@@ -2194,7 +2278,7 @@
                         </div>
                     </div>
                     
-                    <div class="welcome-message" style="margin-top: 2rem;">
+                    <div class="welcome-message" style="margin-top: 2.5rem;">
                         <h2>Add More Mining Power</h2>
                         <p>Purchase additional mining bots to increase your earnings</p>
                     </div>
@@ -2247,13 +2331,13 @@
                                 </div>
                             </div>
                         </div>
-                        <p style="color: var(--gray); font-size: 0.85rem; margin-bottom: 1rem;" id="deposit-note"></p>
+                        <p style="color: var(--gray); font-size: 0.85rem; margin-bottom: 0.8rem;" id="deposit-note"></p>
                         <h2>Deposit Funds</h2>
                         <form id="deposit-form">
                             <div class="form-group">
                                 <label for="deposit-amount">Amount (USD)</label>
                                 <input type="number" id="deposit-amount" class="form-control" placeholder="Enter amount to deposit" step="0.01" min="10" required>
-                                <p style="margin-top: 0.5rem; color: var(--gray); font-size: 0.85rem;">Minimum deposit: $10 (≈ ₵150)</p>
+                                <p style="margin-top: 0.4rem; color: var(--gray); font-size: 0.85rem;">Minimum deposit: $10 (≈ ₵150)</p>
                             </div>
                             <div class="form-group">
                                 <label for="deposit-method">Payment Method</label>
@@ -2300,7 +2384,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p style="color: var(--gray); font-size: 0.85rem; margin-bottom: 1rem;" id="withdraw-note"></p>
+                        <p style="color: var(--gray); font-size: 0.85rem; margin-bottom: 0.8rem;" id="withdraw-note"></p>
                         <h2>Withdraw Funds</h2>
                         <form id="withdraw-form">
                             <div class="form-group">
@@ -2314,8 +2398,8 @@
                             <div class="form-group">
                                 <label for="withdraw-amount">Amount (USD)</label>
                                 <input type="number" id="withdraw-amount" class="form-control" placeholder="Enter amount to withdraw" step="0.01" min="10" required>
-                                <p style="margin-top: 0.5rem; color: var(--gray); font-size: 0.85rem;" id="available-balance">Available balance: $12,458.75</p>
-                                <p style="margin-top: 0.5rem; color: var(--gray); font-size: 0.85rem;" id="withdrawal-fee-note"></p>
+                                <p style="margin-top: 0.4rem; color: var(--gray); font-size: 0.85rem;" id="available-balance">Available balance: $12,458.75</p>
+                                <p style="margin-top: 0.4rem; color: var(--gray); font-size: 0.85rem;" id="withdrawal-fee-note"></p>
                             </div>
                             <div class="form-group">
                                 <label for="withdrawal-method">Withdrawal Method</label>
@@ -2385,9 +2469,9 @@
                         <h2>Invite Friends & Earn</h2>
                         <div class="form-group">
                             <label>Your Referral Link</label>
-                            <div style="display: flex; gap: 8px; align-items: center;">
-                                <input type="text" class="form-control" value="https://zecminer.com/ref/ZECM-2023-001" readonly style="flex: 1;">
-                                <button type="button" class="btn btn-primary" id="copy-ref-link" style="flex-shrink: 0;">
+                            <div style="display: flex; gap: 8px;">
+                                <input type="text" class="form-control" value="https://zecminer.com/ref/ZECM-2023-001" readonly>
+                                <button type="button" class="btn btn-primary" id="copy-ref-link">
                                     <i class="fas fa-copy"></i>
                                 </button>
                             </div>
@@ -2406,6 +2490,38 @@
                             <i class="fas fa-share-alt"></i>
                             Share Referral Link
                         </button>
+                    </div>
+                </section>
+
+                <!-- Support Section (Removed from menu but keeping section in case needed) -->
+                <section id="support" class="section" style="display: none;">
+                    <div class="welcome-message">
+                        <h1>Support Center</h1>
+                        <p>Get help with mining operations and account issues</p>
+                    </div>
+                    <div class="form-container">
+                        <h2>Contact Support</h2>
+                        <form id="support-form">
+                            <div class="form-group">
+                                <label for="support-category">Issue Category</label>
+                                <select id="support-category" class="form-control" required>
+                                    <option value="">Select category</option>
+                                    <option value="mining">Mining Operations</option>
+                                    <option value="earnings">Earnings & Payments</option>
+                                    <option value="technical">Technical Issues</option>
+                                    <option value="account">Account Management</option>
+                                    <option value="other">Other Issues</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="support-message">Message</label>
+                                <textarea id="support-message" class="form-control" rows="5" placeholder="Describe your issue in detail" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Message
+                            </button>
+                        </form>
                     </div>
                 </section>
 
@@ -2455,17 +2571,17 @@
                     <div class="form-container">
                         <h2>Latest Updates</h2>
                         <div style="margin-bottom: 1.5rem;">
-                            <h3 style="color: var(--primary); margin-bottom: 0.5rem; font-size: 1.1rem;">New 30-Day Mining Cycle</h3>
+                            <h3 style="color: var(--primary); margin-bottom: 0.4rem; font-size: 1.1rem;">New 30-Day Mining Cycle</h3>
                             <p style="color: var(--gray); margin-bottom: 0.8rem; font-size: 0.9rem;">June 15, 2023</p>
                             <p style="font-size: 0.95rem;">All mining bots now operate on a 30-day cycle for better predictability and returns. Purchase multiple bots to maximize your earnings!</p>
                         </div>
                         <div style="margin-bottom: 1.5rem;">
-                            <h3 style="color: var(--primary); margin-bottom: 0.5rem; font-size: 1.1rem;">New Deposit & Withdrawal Options</h3>
+                            <h3 style="color: var(--primary); margin-bottom: 0.4rem; font-size: 1.1rem;">New Deposit & Withdrawal Options</h3>
                             <p style="color: var(--gray); margin-bottom: 0.8rem; font-size: 0.9rem;">June 10, 2023</p>
                             <p style="font-size: 0.95rem;">We've added Mobile Money (GHS) support for deposits and withdrawals. Easily convert between USD and GHS at $1 = ₵15 rate.</p>
                         </div>
                         <div style="margin-bottom: 1.5rem;">
-                            <h3 style="color: var(--primary); margin-bottom: 0.5rem; font-size: 1.1rem;">Enhanced My Miners Section</h3>
+                            <h3 style="color: var(--primary); margin-bottom: 0.4rem; font-size: 1.1rem;">Enhanced My Miners Section</h3>
                             <p style="color: var(--gray); margin-bottom: 0.8rem; font-size: 0.9rem;">June 5, 2023</p>
                             <p style="font-size: 0.95rem;">The My Miners section now shows both active miners and expired bots with complete earnings history for better tracking.</p>
                         </div>
@@ -2486,7 +2602,7 @@
                             </div>
                             <h2>Chat with Admin</h2>
                             <p>Need personalized assistance? Our admin team is available to help you with account issues, technical support, and any questions you may have about ZECMINER.</p>
-                            <p style="font-size: 0.95rem;"><strong>Hours:</strong> Monday to Saturday, 9:00 AM - 8:00 PM</p>
+                            <p><strong>Hours:</strong> Monday to Saturday, 9:00 AM - 8:00 PM</p>
                             <button class="btn btn-whatsapp btn-block" onclick="openWhatsAppAdmin()">
                                 <i class="fab fa-whatsapp"></i>
                                 Open WhatsApp Chat
@@ -2545,66 +2661,7 @@
     </div>
 
     <script>
-        // Mobile-specific optimizations
         document.addEventListener('DOMContentLoaded', function() {
-            // Handle iOS viewport height
-            function setViewportHeight() {
-                let vh = window.innerHeight * 0.01;
-                document.documentElement.style.setProperty('--vh', `${vh}px`);
-            }
-            
-            setViewportHeight();
-            window.addEventListener('resize', setViewportHeight);
-            window.addEventListener('orientationchange', setViewportHeight);
-            
-            // Prevent zoom on input focus in iOS
-            document.addEventListener('touchstart', function(event) {
-                if (event.target.tagName === 'INPUT' || event.target.tagName === 'SELECT' || event.target.tagName === 'TEXTAREA') {
-                    // iOS zoom prevention
-                }
-            }, { passive: true });
-            
-            // Enhanced touch handling for mobile
-            let lastTap = 0;
-            document.addEventListener('touchend', function(event) {
-                const currentTime = new Date().getTime();
-                const tapLength = currentTime - lastTap;
-                if (tapLength < 500 && tapLength > 0) {
-                    event.preventDefault();
-                    // Handle double tap if needed
-                }
-                lastTap = currentTime;
-            });
-            
-            // Close sidebar when tapping outside on mobile
-            const overlay = document.getElementById('overlay');
-            const sidebar = document.getElementById('sidebar');
-            const menuToggle = document.getElementById('menu-toggle');
-            
-            overlay.addEventListener('touchstart', function() {
-                if (window.innerWidth <= 768) {
-                    sidebar.classList.remove('active');
-                    overlay.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                }
-            });
-            
-            // Improved menu toggle for touch devices
-            menuToggle.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                const sidebarOpen = sidebar.classList.contains('active');
-                
-                if (!sidebarOpen) {
-                    sidebar.classList.add('active');
-                    overlay.classList.add('active');
-                    menuToggle.classList.add('active');
-                } else {
-                    sidebar.classList.remove('active');
-                    overlay.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                }
-            });
-            
             // Check if user is logged in
             const isLoggedIn = localStorage.getItem('zecminer-loggedIn') === 'true';
             
@@ -2625,7 +2682,6 @@
             if (loginForm) {
                 loginForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    // For demo purposes, we'll just log the user in
                     localStorage.setItem('zecminer-loggedIn', 'true');
                     loginPage.style.display = 'none';
                     dashboardPage.style.display = 'flex';
@@ -2636,7 +2692,6 @@
             const googleSignin = document.getElementById('google-signin');
             if (googleSignin) {
                 googleSignin.addEventListener('click', function() {
-                    // For demo purposes, we'll just log the user in
                     localStorage.setItem('zecminer-loggedIn', 'true');
                     loginPage.style.display = 'none';
                     dashboardPage.style.display = 'flex';
@@ -2655,14 +2710,23 @@
             // Menu Navigation
             const menuItems = document.querySelectorAll('.menu-item');
             const sections = document.querySelectorAll('.section');
-            const uidContainer = document.getElementById('uid-container');
+            const menuToggle = document.getElementById('menu-toggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
             const toast = document.getElementById('toast');
             const themeToggle = document.getElementById('theme-toggle');
             const copyRefLink = document.getElementById('copy-ref-link');
             const confirmSignout = document.getElementById('confirm-signout');
             
+            // User Profile Elements
+            const userInfoToggle = document.getElementById('user-info-toggle');
+            const userProfileDropdown = document.getElementById('user-profile-dropdown');
+            const copyMinerIdBtn = document.getElementById('copy-miner-id');
+            const profileSignoutBtn = document.getElementById('profile-signout');
+            
             // Track sidebar state
             let sidebarOpen = false;
+            let profileDropdownOpen = false;
             
             // Function to toggle sidebar
             function toggleSidebar() {
@@ -2684,6 +2748,46 @@
                 toggleSidebar();
             });
             
+            // Toggle profile dropdown
+            userInfoToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                profileDropdownOpen = !profileDropdownOpen;
+                userProfileDropdown.classList.toggle('active', profileDropdownOpen);
+                
+                // Close sidebar if open on mobile
+                if (window.innerWidth <= 768 && sidebarOpen) {
+                    toggleSidebar();
+                }
+            });
+            
+            // Close profile dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (profileDropdownOpen && !userInfoToggle.contains(e.target) && !userProfileDropdown.contains(e.target)) {
+                    userProfileDropdown.classList.remove('active');
+                    profileDropdownOpen = false;
+                }
+            });
+            
+            // Copy Miner ID from profile dropdown
+            copyMinerIdBtn.addEventListener('click', function() {
+                const minerId = document.getElementById('profile-miner-id').textContent;
+                navigator.clipboard.writeText(minerId).then(() => {
+                    toast.textContent = 'Miner ID copied to clipboard!';
+                    toast.classList.add('show');
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 3000);
+                }).catch(err => {
+                    console.error('Failed to copy Miner ID: ', err);
+                });
+            });
+            
+            // Sign out from profile dropdown
+            profileSignoutBtn.addEventListener('click', function() {
+                localStorage.removeItem('zecminer-loggedIn');
+                location.reload();
+            });
+            
             // Menu item click handler
             menuItems.forEach(item => {
                 item.addEventListener('click', function() {
@@ -2703,6 +2807,12 @@
                         toggleSidebar();
                     }
                     
+                    // Close profile dropdown if open
+                    if (profileDropdownOpen) {
+                        userProfileDropdown.classList.remove('active');
+                        profileDropdownOpen = false;
+                    }
+                    
                     // Handle sign out
                     if (targetId === 'signout') {
                         document.getElementById('signout').classList.add('active');
@@ -2719,20 +2829,6 @@
             const notificationBell = document.querySelector('.notification');
             notificationBell.addEventListener('click', function() {
                 alert('You have 3 new notifications:\n\n• Mining bot #001 earned $45.00\n• New Ultimate Miner available\n• Affiliate commission received: $15.50');
-            });
-            
-            // UID Copy to Clipboard
-            uidContainer.addEventListener('click', function() {
-                const uid = 'ZEC-2023-MD-001';
-                navigator.clipboard.writeText(uid).then(() => {
-                    toast.textContent = 'Miner ID copied to clipboard!';
-                    toast.classList.add('show');
-                    setTimeout(() => {
-                        toast.classList.remove('show');
-                    }, 3000);
-                }).catch(err => {
-                    console.error('Failed to copy Miner ID: ', err);
-                });
             });
             
             // Copy referral link
@@ -2879,7 +2975,7 @@
             }
             
             // Form submissions
-            const forms = ['deposit-form', 'withdraw-form', 'add-miner-form', 'settings-form'];
+            const forms = ['deposit-form', 'withdraw-form', 'add-miner-form', 'support-form', 'settings-form'];
             forms.forEach(formId => {
                 const form = document.getElementById(formId);
                 if (form) {
@@ -2930,6 +3026,19 @@
                             toast.classList.remove('show');
                         }, 3000);
                     });
+                }
+            });
+            
+            // Close dropdowns on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (profileDropdownOpen) {
+                        userProfileDropdown.classList.remove('active');
+                        profileDropdownOpen = false;
+                    }
+                    if (sidebarOpen) {
+                        toggleSidebar();
+                    }
                 }
             });
         });
@@ -2985,19 +3094,16 @@
         
         // WhatsApp functions
         function openWhatsAppAdmin() {
-            // Replace with actual admin WhatsApp number
-            const adminNumber = "+233547121337"; // Example Ghana number
+            const adminNumber = "+233547121337";
             const message = "Hello ZECMINER Admin, I need assistance with my account.";
             const whatsappUrl = `https://wa.me/${adminNumber}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         }
         
         function joinWhatsAppGroup() {
-            // Replace with actual WhatsApp group link
             const groupLink = "https://chat.whatsapp.com/EGhU27JvQU6FfjKPXU9dXu?mode=wwt";
             window.open(groupLink, '_blank');
         }
-    
     </script>
 </body>
 </html>
