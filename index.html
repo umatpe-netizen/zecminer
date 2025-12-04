@@ -5,6 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ZECMINER - Crypto Mining Investment</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Firebase SDK -->
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+      import { 
+        getAuth, 
+        signInWithEmailAndPassword, 
+        createUserWithEmailAndPassword, 
+        signInWithPopup, 
+        GoogleAuthProvider,
+        signOut,
+        sendEmailVerification,
+        sendPasswordResetEmail,
+        onAuthStateChanged
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDZ-wVVOoqMbLk-_3xj5qKCHNmEgEz69O8",
+        authDomain: "zecminer-d16de.firebaseapp.com",
+        projectId: "zecminer-d16de",
+        storageBucket: "zecminer-d16de.firebasestorage.app",
+        messagingSenderId: "521460398490",
+        appId: "1:521460398490:web:68d8bffe5f269d1b06e223"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const googleProvider = new GoogleAuthProvider();
+
+      // Make auth available globally
+      window.auth = auth;
+      window.signInWithEmailAndPassword = signInWithEmailAndPassword;
+      window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+      window.signInWithPopup = signInWithPopup;
+      window.googleProvider = googleProvider;
+      window.signOut = signOut;
+      window.sendEmailVerification = sendEmailVerification;
+      window.sendPasswordResetEmail = sendPasswordResetEmail;
+      window.onAuthStateChanged = onAuthStateChanged;
+    </script>
+    
     <style>
         :root {
             --primary: #d4af37; /* Gold */
@@ -1338,6 +1382,48 @@
             font-size: 0.9rem; /* Reduced */
         }
 
+        /* New Styles for Authentication */
+        .auth-message {
+            padding: 0.8rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            display: none;
+        }
+
+        .auth-message.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        .auth-message.error {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            border: 1px solid var(--danger);
+        }
+
+        .auth-message.warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+            border: 1px solid var(--warning);
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .content {
@@ -1449,6 +1535,8 @@
             <h1>Welcome to ZECMINER</h1>
             <p>Start your crypto mining journey with our powerful mining bots</p>
             
+            <div id="auth-message" class="auth-message"></div>
+            
             <button class="btn btn-block google-signin" id="google-signin">
                 <i class="fab fa-google"></i>
                 Sign in with Google
@@ -1465,7 +1553,10 @@
                 <div class="form-group">
                     <input type="password" id="login-password" class="form-control" placeholder="Password" required>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">
+                <div style="text-align: right; margin-bottom: 1rem;">
+                    <a href="#" id="forgot-password" style="color: var(--secondary); text-decoration: none; font-size: 0.85rem;">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" id="login-btn">
                     <i class="fas fa-sign-in-alt"></i>
                     Sign In
                 </button>
@@ -1473,6 +1564,60 @@
             
             <p style="margin-top: 1.2rem;">
                 Don't have an account? <a href="#" id="show-signup" style="color: var(--secondary); text-decoration: none;">Sign up</a>
+            </p>
+        </div>
+
+        <!-- Sign Up Card (hidden by default) -->
+        <div class="login-card" id="signup-card" style="display: none;">
+            <div class="logo" style="justify-content: center; margin-bottom: 1.2rem;">
+                <div class="logo-icon">
+                    <div class="logo-icon-inner">
+                        <i class="fas fa-server"></i>
+                    </div>
+                </div>
+                <span class="logo-text">ZECMINER</span>
+            </div>
+            <h1>Create Account</h1>
+            <p>Join our mining community today</p>
+            
+            <div id="signup-message" class="auth-message"></div>
+            
+            <button class="btn btn-block google-signin" id="google-signup">
+                <i class="fab fa-google"></i>
+                Sign up with Google
+            </button>
+            
+            <div class="divider">
+                <span>Or sign up with email</span>
+            </div>
+            
+            <form id="signup-form">
+                <div class="form-group">
+                    <input type="text" id="signup-name" class="form-control" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="signup-email" class="form-control" placeholder="Email address" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="signup-password" class="form-control" placeholder="Password (min. 6 characters)" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="signup-confirm-password" class="form-control" placeholder="Confirm Password" required>
+                </div>
+                <div class="form-group">
+                    <label style="display: flex; align-items: center; font-size: 0.85rem; color: var(--gray);">
+                        <input type="checkbox" id="terms-agreement" required style="margin-right: 8px;">
+                        I agree to the <a href="#" style="color: var(--secondary);">Terms of Service</a> and <a href="#" style="color: var(--secondary);">Privacy Policy</a>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" id="signup-btn">
+                    <i class="fas fa-user-plus"></i>
+                    Create Account
+                </button>
+            </form>
+            
+            <p style="margin-top: 1.2rem; text-align: center;">
+                Already have an account? <a href="#" id="show-login" style="color: var(--secondary); text-decoration: none;">Sign in</a>
             </p>
         </div>
     </div>
@@ -1517,19 +1662,22 @@
                 <!-- Enhanced Profile with UID -->
                 <div class="user-profile-container">
                     <div class="user-info" id="user-info-toggle">
-                        <div class="user-avatar">MP</div>
-                        <div class="user-name">Mining Pro</div>
+                        <div class="user-avatar" id="user-avatar">MP</div>
+                        <div class="user-name" id="user-display-name">Mining Pro</div>
                     </div>
                     <div class="user-profile-dropdown" id="user-profile-dropdown">
                         <div class="user-profile-header">
-                            <div class="profile-avatar">MP</div>
-                            <h3 class="profile-name">Mining Pro</h3>
-                            <p class="profile-email">mining.pro@example.com</p>
+                            <div class="profile-avatar" id="profile-avatar">MP</div>
+                            <h3 class="profile-name" id="profile-name">Mining Pro</h3>
+                            <p class="profile-email" id="profile-email">mining.pro@example.com</p>
+                            <div id="email-verified-badge" style="display: none; background: var(--success); color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; margin-top: 4px;">
+                                <i class="fas fa-check-circle"></i> Verified
+                            </div>
                         </div>
                         <div class="user-profile-content">
                             <div class="profile-info-item">
                                 <span class="profile-info-label">Account Status</span>
-                                <span class="profile-info-value" style="color: var(--success);">Active</span>
+                                <span class="profile-info-value" style="color: var(--success);" id="profile-status">Active</span>
                             </div>
                             <div class="profile-info-item">
                                 <span class="profile-info-label">Miner ID</span>
@@ -1537,7 +1685,7 @@
                             </div>
                             <div class="profile-info-item">
                                 <span class="profile-info-label">Member Since</span>
-                                <span class="profile-info-value">Jan 2023</span>
+                                <span class="profile-info-value" id="profile-created-at">Jan 2023</span>
                             </div>
                             <div class="profile-info-item">
                                 <span class="profile-info-label">Account Level</span>
@@ -1557,6 +1705,10 @@
                             </div>
                         </div>
                         <div class="profile-actions">
+                            <button class="profile-action-btn" id="verify-email-btn">
+                                <i class="fas fa-envelope"></i>
+                                Verify Email
+                            </button>
                             <button class="profile-action-btn" id="copy-miner-id">
                                 <i class="fas fa-copy"></i>
                                 Copy Miner ID
@@ -1564,6 +1716,10 @@
                             <button class="profile-action-btn" id="edit-profile">
                                 <i class="fas fa-user-cog"></i>
                                 Edit Profile
+                            </button>
+                            <button class="profile-action-btn" id="change-password">
+                                <i class="fas fa-key"></i>
+                                Change Password
                             </button>
                             <button class="profile-action-btn" id="security-settings">
                                 <i class="fas fa-shield-alt"></i>
@@ -1646,8 +1802,8 @@
                 <!-- Dashboard Section -->
                 <section id="dashboard" class="section active">
                     <div class="welcome-message">
-                        <h1>Welcome back, Mining Pro!</h1>
-                        <p>Your mining bots are actively generating profits</p>
+                        <h1 id="dashboard-welcome">Welcome back, Mining Pro!</h1>
+                        <p id="dashboard-subtitle">Your mining bots are actively generating profits</p>
                     </div>
 
                     <div class="stats-grid">
@@ -2662,52 +2818,12 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if user is logged in
-            const isLoggedIn = localStorage.getItem('zecminer-loggedIn') === 'true';
+            // Wait for Firebase to be available
+            setTimeout(() => {
+                initFirebaseAuth();
+            }, 100);
             
-            // Show appropriate page based on login status
-            const loginPage = document.getElementById('login-page');
-            const dashboardPage = document.getElementById('dashboard-page');
-            
-            if (isLoggedIn) {
-                loginPage.style.display = 'none';
-                dashboardPage.style.display = 'flex';
-            } else {
-                loginPage.style.display = 'flex';
-                dashboardPage.style.display = 'none';
-            }
-            
-            // Login form submission
-            const loginForm = document.getElementById('login-form');
-            if (loginForm) {
-                loginForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    localStorage.setItem('zecminer-loggedIn', 'true');
-                    loginPage.style.display = 'none';
-                    dashboardPage.style.display = 'flex';
-                });
-            }
-            
-            // Google Sign In
-            const googleSignin = document.getElementById('google-signin');
-            if (googleSignin) {
-                googleSignin.addEventListener('click', function() {
-                    localStorage.setItem('zecminer-loggedIn', 'true');
-                    loginPage.style.display = 'none';
-                    dashboardPage.style.display = 'flex';
-                });
-            }
-            
-            // Show signup form (for demo purposes)
-            const showSignup = document.getElementById('show-signup');
-            if (showSignup) {
-                showSignup.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    alert('Sign up functionality would be implemented here');
-                });
-            }
-            
-            // Menu Navigation
+            // Menu Navigation (KEEPING ALL EXISTING FUNCTIONALITY)
             const menuItems = document.querySelectorAll('.menu-item');
             const sections = document.querySelectorAll('.section');
             const menuToggle = document.getElementById('menu-toggle');
@@ -2723,6 +2839,8 @@
             const userProfileDropdown = document.getElementById('user-profile-dropdown');
             const copyMinerIdBtn = document.getElementById('copy-miner-id');
             const profileSignoutBtn = document.getElementById('profile-signout');
+            const verifyEmailBtn = document.getElementById('verify-email-btn');
+            const changePasswordBtn = document.getElementById('change-password');
             
             // Track sidebar state
             let sidebarOpen = false;
@@ -2768,7 +2886,7 @@
                 }
             });
             
-            // Copy Miner ID from profile dropdown
+            // Copy Miner ID from profile dropdown (EXISTING FUNCTION)
             copyMinerIdBtn.addEventListener('click', function() {
                 const minerId = document.getElementById('profile-miner-id').textContent;
                 navigator.clipboard.writeText(minerId).then(() => {
@@ -2782,11 +2900,33 @@
                 });
             });
             
-            // Sign out from profile dropdown
-            profileSignoutBtn.addEventListener('click', function() {
-                localStorage.removeItem('zecminer-loggedIn');
-                location.reload();
-            });
+            // Verify Email Button
+            if (verifyEmailBtn) {
+                verifyEmailBtn.addEventListener('click', async function() {
+                    if (!window.auth || !window.auth.currentUser) return;
+                    
+                    try {
+                        await window.sendEmailVerification(window.auth.currentUser);
+                        showAuthMessage('Verification email sent! Check your inbox.', 'success');
+                    } catch (error) {
+                        showAuthMessage('Error sending verification email: ' + error.message, 'error');
+                    }
+                });
+            }
+            
+            // Change Password Button
+            if (changePasswordBtn) {
+                changePasswordBtn.addEventListener('click', async function() {
+                    if (!window.auth || !window.auth.currentUser || !window.auth.currentUser.email) return;
+                    
+                    try {
+                        await window.sendPasswordResetEmail(window.auth, window.auth.currentUser.email);
+                        showAuthMessage('Password reset email sent! Check your inbox.', 'success');
+                    } catch (error) {
+                        showAuthMessage('Error sending password reset email: ' + error.message, 'error');
+                    }
+                });
+            }
             
             // Menu item click handler
             menuItems.forEach(item => {
@@ -2850,21 +2990,14 @@
             // Confirm sign out
             if (confirmSignout) {
                 confirmSignout.addEventListener('click', function() {
-                    // Clear login status
-                    localStorage.removeItem('zecminer-loggedIn');
-                    
-                    // Redirect to login page
-                    loginPage.style.display = 'flex';
-                    dashboardPage.style.display = 'none';
-                    
-                    // Reset to dashboard view for next login
-                    menuItems.forEach(i => i.classList.remove('active'));
-                    sections.forEach(s => s.classList.remove('active'));
-                    document.querySelector('.menu-item[data-target="dashboard"]').classList.add('active');
-                    document.getElementById('dashboard').classList.add('active');
-                    
-                    // Close sidebar
-                    toggleSidebar();
+                    signOutUser();
+                });
+            }
+            
+            // Profile sign out
+            if (profileSignoutBtn) {
+                profileSignoutBtn.addEventListener('click', function() {
+                    signOutUser();
                 });
             }
             
@@ -2974,7 +3107,7 @@
                 });
             }
             
-            // Form submissions
+            // Form submissions (ALL EXISTING FORMS KEPT INTACT)
             const forms = ['deposit-form', 'withdraw-form', 'add-miner-form', 'support-form', 'settings-form'];
             forms.forEach(formId => {
                 const form = document.getElementById(formId);
@@ -3043,7 +3176,315 @@
             });
         });
         
-        // Currency conversion functions
+        // FIREBASE AUTHENTICATION FUNCTIONS
+        function initFirebaseAuth() {
+            if (!window.onAuthStateChanged || !window.auth) {
+                console.error('Firebase not loaded yet');
+                setTimeout(initFirebaseAuth, 100);
+                return;
+            }
+            
+            // Set up auth state listener
+            window.onAuthStateChanged(window.auth, (user) => {
+                const loginPage = document.getElementById('login-page');
+                const dashboardPage = document.getElementById('dashboard-page');
+                const dashboardWelcome = document.getElementById('dashboard-welcome');
+                const userAvatar = document.getElementById('user-avatar');
+                const userDisplayName = document.getElementById('user-display-name');
+                const profileAvatar = document.getElementById('profile-avatar');
+                const profileName = document.getElementById('profile-name');
+                const profileEmail = document.getElementById('profile-email');
+                const profileCreatedAt = document.getElementById('profile-created-at');
+                const emailVerifiedBadge = document.getElementById('email-verified-badge');
+                const verifyEmailBtn = document.getElementById('verify-email-btn');
+                
+                if (user) {
+                    // User is signed in
+                    loginPage.style.display = 'none';
+                    dashboardPage.style.display = 'flex';
+                    
+                    // Update user info
+                    const displayName = user.displayName || 'Mining Pro';
+                    const email = user.email || 'mining.pro@example.com';
+                    const createdAt = user.metadata.creationTime ? 
+                        new Date(user.metadata.creationTime).toLocaleDateString('en-US', { 
+                            month: 'short', 
+                            year: 'numeric' 
+                        }) : 'Jan 2023';
+                    
+                    // Update dashboard welcome
+                    dashboardWelcome.textContent = `Welcome back, ${displayName}!`;
+                    
+                    // Update header
+                    userAvatar.textContent = displayName.charAt(0).toUpperCase();
+                    userDisplayName.textContent = displayName;
+                    
+                    // Update profile dropdown
+                    profileAvatar.textContent = displayName.charAt(0).toUpperCase();
+                    profileName.textContent = displayName;
+                    profileEmail.textContent = email;
+                    profileCreatedAt.textContent = createdAt;
+                    
+                    // Update email verification status
+                    if (user.emailVerified) {
+                        emailVerifiedBadge.style.display = 'inline-block';
+                        if (verifyEmailBtn) {
+                            verifyEmailBtn.innerHTML = '<i class="fas fa-check-circle"></i> Email Verified';
+                            verifyEmailBtn.disabled = true;
+                        }
+                    } else {
+                        emailVerifiedBadge.style.display = 'none';
+                        if (verifyEmailBtn) {
+                            verifyEmailBtn.innerHTML = '<i class="fas fa-envelope"></i> Verify Email';
+                            verifyEmailBtn.disabled = false;
+                        }
+                    }
+                } else {
+                    // User is signed out
+                    loginPage.style.display = 'flex';
+                    dashboardPage.style.display = 'none';
+                }
+            });
+            
+            // Set up login form
+            const loginForm = document.getElementById('login-form');
+            if (loginForm) {
+                loginForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const email = document.getElementById('login-email').value;
+                    const password = document.getElementById('login-password').value;
+                    const loginBtn = document.getElementById('login-btn');
+                    
+                    // Show loading
+                    const originalText = loginBtn.innerHTML;
+                    loginBtn.innerHTML = '<span class="loading-spinner"></span> Signing in...';
+                    loginBtn.disabled = true;
+                    
+                    try {
+                        await window.signInWithEmailAndPassword(window.auth, email, password);
+                        showAuthMessage('Successfully signed in!', 'success');
+                    } catch (error) {
+                        let errorMessage = 'An error occurred during sign in.';
+                        
+                        switch (error.code) {
+                            case 'auth/user-not-found':
+                                errorMessage = 'No account found with this email.';
+                                break;
+                            case 'auth/wrong-password':
+                                errorMessage = 'Incorrect password.';
+                                break;
+                            case 'auth/invalid-email':
+                                errorMessage = 'Invalid email address.';
+                                break;
+                            case 'auth/user-disabled':
+                                errorMessage = 'This account has been disabled.';
+                                break;
+                            case 'auth/too-many-requests':
+                                errorMessage = 'Too many failed attempts. Please try again later.';
+                                break;
+                            default:
+                                errorMessage = error.message;
+                        }
+                        
+                        showAuthMessage(errorMessage, 'error');
+                    } finally {
+                        // Restore button
+                        loginBtn.innerHTML = originalText;
+                        loginBtn.disabled = false;
+                    }
+                });
+            }
+            
+            // Set up signup form
+            const signupForm = document.getElementById('signup-form');
+            if (signupForm) {
+                signupForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('signup-name').value;
+                    const email = document.getElementById('signup-email').value;
+                    const password = document.getElementById('signup-password').value;
+                    const confirmPassword = document.getElementById('signup-confirm-password').value;
+                    const signupBtn = document.getElementById('signup-btn');
+                    
+                    // Validate passwords match
+                    if (password !== confirmPassword) {
+                        showAuthMessage('Passwords do not match.', 'error', 'signup');
+                        return;
+                    }
+                    
+                    // Validate password length
+                    if (password.length < 6) {
+                        showAuthMessage('Password must be at least 6 characters.', 'error', 'signup');
+                        return;
+                    }
+                    
+                    // Show loading
+                    const originalText = signupBtn.innerHTML;
+                    signupBtn.innerHTML = '<span class="loading-spinner"></span> Creating account...';
+                    signupBtn.disabled = true;
+                    
+                    try {
+                        // Create user
+                        const userCredential = await window.createUserWithEmailAndPassword(window.auth, email, password);
+                        
+                        // Send verification email
+                        await window.sendEmailVerification(userCredential.user);
+                        
+                        showAuthMessage('Account created! Please check your email for verification.', 'success', 'signup');
+                        
+                        // Auto-switch to login after 3 seconds
+                        setTimeout(() => {
+                            document.getElementById('signup-card').style.display = 'none';
+                            document.querySelector('.login-card').style.display = 'block';
+                            clearAuthMessages();
+                        }, 3000);
+                        
+                    } catch (error) {
+                        let errorMessage = 'An error occurred during sign up.';
+                        
+                        switch (error.code) {
+                            case 'auth/email-already-in-use':
+                                errorMessage = 'An account already exists with this email.';
+                                break;
+                            case 'auth/invalid-email':
+                                errorMessage = 'Invalid email address.';
+                                break;
+                            case 'auth/operation-not-allowed':
+                                errorMessage = 'Email/password accounts are not enabled.';
+                                break;
+                            case 'auth/weak-password':
+                                errorMessage = 'Password is too weak.';
+                                break;
+                            default:
+                                errorMessage = error.message;
+                        }
+                        
+                        showAuthMessage(errorMessage, 'error', 'signup');
+                    } finally {
+                        // Restore button
+                        signupBtn.innerHTML = originalText;
+                        signupBtn.disabled = false;
+                    }
+                });
+            }
+            
+            // Google Sign In
+            const googleSigninBtn = document.getElementById('google-signin');
+            if (googleSigninBtn) {
+                googleSigninBtn.addEventListener('click', async function() {
+                    try {
+                        await window.signInWithPopup(window.auth, window.googleProvider);
+                        showAuthMessage('Successfully signed in with Google!', 'success');
+                    } catch (error) {
+                        showAuthMessage('Error signing in with Google: ' + error.message, 'error');
+                    }
+                });
+            }
+            
+            // Google Sign Up
+            const googleSignupBtn = document.getElementById('google-signup');
+            if (googleSignupBtn) {
+                googleSignupBtn.addEventListener('click', async function() {
+                    try {
+                        await window.signInWithPopup(window.auth, window.googleProvider);
+                        showAuthMessage('Successfully signed up with Google!', 'success', 'signup');
+                    } catch (error) {
+                        showAuthMessage('Error signing up with Google: ' + error.message, 'error', 'signup');
+                    }
+                });
+            }
+            
+            // Forgot Password
+            const forgotPasswordBtn = document.getElementById('forgot-password');
+            if (forgotPasswordBtn) {
+                forgotPasswordBtn.addEventListener('click', async function(e) {
+                    e.preventDefault();
+                    
+                    const email = document.getElementById('login-email').value;
+                    
+                    if (!email) {
+                        showAuthMessage('Please enter your email address first.', 'warning');
+                        return;
+                    }
+                    
+                    try {
+                        await window.sendPasswordResetEmail(window.auth, email);
+                        showAuthMessage('Password reset email sent! Check your inbox.', 'success');
+                    } catch (error) {
+                        showAuthMessage('Error sending password reset email: ' + error.message, 'error');
+                    }
+                });
+            }
+            
+            // Toggle between login and signup forms
+            const showSignupBtn = document.getElementById('show-signup');
+            if (showSignupBtn) {
+                showSignupBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector('.login-card').style.display = 'none';
+                    document.getElementById('signup-card').style.display = 'block';
+                    clearAuthMessages();
+                });
+            }
+            
+            const showLoginBtn = document.getElementById('show-login');
+            if (showLoginBtn) {
+                showLoginBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.getElementById('signup-card').style.display = 'none';
+                    document.querySelector('.login-card').style.display = 'block';
+                    clearAuthMessages();
+                });
+            }
+        }
+        
+        function signOutUser() {
+            if (!window.signOut || !window.auth) {
+                // Fallback to localStorage if Firebase not available
+                localStorage.removeItem('zecminer-loggedIn');
+                location.reload();
+                return;
+            }
+            
+            window.signOut(window.auth).then(() => {
+                showToast('Successfully signed out!', 'success');
+            }).catch((error) => {
+                showToast('Error signing out.', 'error');
+            });
+        }
+        
+        function showAuthMessage(message, type = 'error', formType = 'login') {
+            const messageElement = document.getElementById(formType === 'login' ? 'auth-message' : 'signup-message');
+            messageElement.textContent = message;
+            messageElement.className = `auth-message ${type}`;
+            messageElement.style.display = 'block';
+        }
+        
+        function clearAuthMessages() {
+            document.getElementById('auth-message').style.display = 'none';
+            document.getElementById('signup-message').style.display = 'none';
+        }
+        
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast';
+            if (type === 'error') {
+                toast.style.background = 'linear-gradient(135deg, var(--danger), #ff6b6b)';
+            } else if (type === 'success') {
+                toast.style.background = 'linear-gradient(135deg, var(--success), #10b981)';
+            } else {
+                toast.style.background = 'linear-gradient(135deg, var(--primary), var(--primary-dark))';
+            }
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Currency conversion functions (ALL EXISTING FUNCTIONS KEPT INTACT)
         const EXCHANGE_RATE = 15; // $1 = ₵15
         
         function convertDepositCurrency(source) {
